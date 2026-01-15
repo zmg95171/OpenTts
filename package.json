@@ -1,6 +1,6 @@
 {
   "name": "edge-tts-test",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Edge TTS API 测试项目",
   "main": "index.js",
   "scripts": {
