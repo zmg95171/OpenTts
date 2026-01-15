@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenTTS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>OpenTTS</h1>
+            <p class="subtitle">文本转语音服务测试工具</p>
+        </header>
+
+        <main>
+            <section class="voice-section">
+                <h2>选择语音</h2>
+                <div class="voice-controls">
+                    <select id="languageFilter" class="filter-select">
+                        <option value="">所有语言</option>
+                    </select>
+                    <select id="genderFilter" class="filter-select">
+                        <option value="">所有性别</option>
+                        <option value="female">女声</option>
+                        <option value="male">男声</option>
+                    </select>
+                    <div class="status-indicator">
+                        <span class="status-dot" id="statusDot"></span>
+                        <span class="status-text" id="statusText">检查中...</span>
+                    </div>
+                </div>
+                <div class="voice-list" id="voiceList">
+                    <p class="loading">加载中...</p>
+                </div>
+            </section>
+
+            <section class="text-section">
+                <h2>输入文本</h2>
+                <div class="file-upload-area" id="fileUploadArea">
+                    <input type="file" id="fileInput" accept=".txt" style="display: none;">
+                    <div class="upload-content">
+                        <div class="upload-icon">📁</div>
+                        <p>点击或拖拽文本文件到此处</p>
+                        <p class="upload-hint">支持 .txt 格式文件</p>
+                    </div>
+                </div>
+                <textarea 
+                    id="textInput" 
+                    placeholder="请输入要转换的文本内容..."
+                    maxlength="1000"
+                ></textarea>
+                <div class="text-info">
+                    <span id="charCount">0/1000</span>
+                </div>
+                <div class="speed-control">
+                    <label for="speedRange">语速调节：</label>
+                    <input type="range" id="speedRange" min="0.5" max="2" step="0.1" value="1">
+                    <span id="speedValue">1.0x</span>
+                </div>
+            </section>
+
+            <section class="action-section">
+                <button id="generateBtn" class="btn btn-primary" disabled>
+                    <span class="btn-text">生成语音</span>
+                    <span class="btn-loader" style="display: none;">生成中...</span>
+                </button>
+            </section>
+
+            <section class="player-section" id="playerSection" style="display: none;">
+                <h2>播放</h2>
+                <audio id="audioPlayer" controls></audio>
+                <div class="player-controls">
+                    <button id="downloadBtn" class="btn btn-secondary">下载音频</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by <a href="https://github.com/open-tts/open-tts" target="_blank" rel="noopener noreferrer">OpenTTS</a></p>
+            <p><a href="https://2068.com" target="_blank" rel="noopener noreferrer">2068.com</a></p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
