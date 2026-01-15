@@ -116,9 +116,8 @@ async function testConnection() {
     console.log('开始测试网络连接...');
     updateServiceStatus('checking');
     try {
-        const response = await fetch('https://tts.2068.online/api/tts/voices', {
+        const response = await fetch('/api/voices', {
             method: 'GET',
-            mode: 'cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -331,14 +330,14 @@ async function generateSpeech() {
     elements.generateBtn.querySelector('.btn-loader').style.display = 'inline';
 
     try {
-        const response = await fetch('https://tts.2068.online/api/tts/speak', {
+        const response = await fetch('/api/speak', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 text: text,
-                voiceId: voice.id  // 使用voiceId参数
+                voice: voice  // 使用voice对象
             })
         });
 
